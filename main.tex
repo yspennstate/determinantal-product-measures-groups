@@ -1,0 +1,498 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\Alph{theorem}}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[proposition]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+
+\newcommand{\Ga}{\Gamma}
+\newcommand{\FK}{\Delta}
+\newcommand{\tr}{\tau}
+\newcommand{\dom}{\preccurlyeq}
+\newcommand{\ltwo}{\ell^2}
+
+
+\title{Product measures under invariant determinantal processes on groups}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Givat Ram, Jerusalem, Israel}
+\subjclass[2020]{Primary 60G55; Secondary 60E15, 22D25, 43A07, 06F15}
+\keywords{determinantal process, stochastic domination, Fuglede--Kadison determinant, amenable group, ordered group}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Let $\Ga$ be a countable group and let $\mu_K$ be the determinantal measure on $\{0,1\}^{\Ga}$ given by a
+$\Ga$-equivariant positive contraction $K$ on $\ltwo(\Ga)$. Lyons conjectured that $\mu_K$ stochastically dominates
+the Bernoulli product measure of density equal to the Fuglede--Kadison determinant $\FK(K)$, is dominated by the product
+measure of density $1-\FK(I-K)$, and that these bounds are optimal. We show that the density $\FK(K)$ can be exceeded
+by a dominated product measure for some $K$ if and only if $\Ga$ is nonamenable, and likewise for the upper bound. We
+also prove both inequalities for every left-orderable group, and more generally for groups with a subgroup $H$ such
+that $\Ga/H$ carries a $\Ga$-invariant order and $H$ satisfies the lower inequality.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+A determinantal process on a countable group $\Ga$ is given by an equivariant positive contraction $K$ on $\ltwo(\Ga)$,
+and it is natural to ask how it compares with Bernoulli percolation. For $\Ga=\mathbb Z^d$, where $K$ is a Fourier
+multiplier by a measurable $f$ with values in $[0,1]$, Lyons and Steif \cite{LS03} proved that $\mu_K$ stochastically
+dominates the product measure whose density is the geometric mean $\exp\int\log f$, is dominated by the product measure
+of density $1-\exp\int\log(1-f)$, and that neither density can be improved. Their argument reveals the sites one at a
+time in lexicographic order and uses the Szeg\H{o}--Helson--Lowdenslager formula to bound the conditional probability of
+each site given the sites already revealed.
+
+On a general group the geometric mean is replaced by the Fuglede--Kadison determinant, and Lyons
+\cite[Conj.~5.7]{LyICM} conjectured that for every equivariant positive contraction $K$,
+\[
+\pi_{\FK(K)}\dom\mu_K\dom\pi_{1-\FK(I-K)},
+\]
+and that these bounds are optimal, noting that the question is open even for finite groups. As in the theorem of
+Lyons and Steif for $\mathbb Z^d$ \cite[Thm.~5.3]{LS03}, optimality means that for each $K$ no product measure of
+density larger than $\FK(K)$ is dominated by $\mu_K$, and none of density smaller than $1-\FK(I-K)$ dominates it.
+
+Here $\pi_p$ is the product measure of density $p$, $\mu_K$ is the determinantal measure of $K$, $\dom$ is
+stochastic domination, and $\FK$ is the Fuglede--Kadison determinant; Section~\ref{sec:notation} gives the
+definitions. Our first result shows that the optimality clause characterizes amenability; in particular it fails on
+every nonamenable group.
+
+\begin{theorem}\label{thm:A}
+For a countable group $\Ga$ the following are equivalent.
+\begin{enumerate}
+\item $\Ga$ is amenable.
+\item For every equivariant $0\le K\le I$ and every $p$, if $\pi_p\dom\mu_K$ then $p\le\FK(K)$.
+\item For every equivariant $0\le K\le I$ and every $p$, if $\mu_K\dom\pi_p$ then $p\ge 1-\FK(I-K)$.
+\end{enumerate}
+\end{theorem}
+
+On an amenable group
+neither bound can be improved for any $K$; the upper bound on the density of a dominated product measure comes from
+F{\o}lner approximation of the Fuglede--Kadison determinant \cite{LT14}, exactly as in the argument of Lyons and Steif.
+On a nonamenable group there is always a kernel for which a product measure of density strictly larger than $\FK(K)$ is
+dominated, and likewise at the upper end. The kernels are built from a symmetric random walk whose spectral radius is
+small, which Kesten's theorem \cite{Kes59} provides; on the free group $F_2$ an explicit kernel is given in
+Proposition~\ref{prop:F2}. Ray and Spinka \cite{RS} characterize amenability of graphs through stochastic domination
+for the low-temperature Ising model and for the infinite cluster of Bernoulli percolation; Theorem~\ref{thm:A} is a
+statement of the same kind for determinantal processes. Since $\pi_p=\mu_{pI}$, the domination $\pi_p\dom\mu_K$ holds
+whenever $pI\le K$ \cite[Thm.~2.9]{LyICM}, and on finitely generated sofic groups Lyons and Thom \cite{LyT16} show
+that such a monotone coupling can be chosen invariant; the inequalities studied here concern the threshold $\FK(K)$,
+which is at least as large.
+
+Our second result proves the two inequalities on a large class of groups: those having a subgroup $H$ for which
+$\Ga/H$ carries a $\Ga$-invariant total order and on which the lower inequality holds.
+
+\begin{theorem}\label{thm:B}
+Let $H\le\Ga$ and suppose $\Ga/H$ carries a total order invariant under left multiplication by $\Ga$. Suppose that
+every $H$-equivariant $0\le R\le I$ on $\ltwo(H)$ satisfies $\pi_{\FK(R)}\dom\mu_R$. Then every $\Ga$-equivariant
+$0\le K\le I$ on $\ltwo(\Ga)$ satisfies
+\[
+\pi_{\FK(K)}\dom\mu_K\dom\pi_{1-\FK(I-K)}.
+\]
+\end{theorem}
+
+With $H$ trivial
+this gives both inequalities on every left-orderable group. In that case the proof is the coupling of Lyons and Steif,
+run with the order of $\Ga$ in place of the lexicographic order, with Arveson's subdiagonal algebra of an ordered group
+\cite{Arv67} in place of the Hardy space, and with the Jensen inequality for subdiagonal algebras
+\cite{Lab05,BL} in place of the Szeg\H{o} formula. The determinant identity used there is a case of Austin's
+Theorem~B \cite{Aus}: his theorem is stated for invariant random orders, and a left-invariant total order is the
+point mass on one of them \cite[Sec.~4.1]{Aus}, where the mean in his formula has a single term. Theorem~\ref{thm:B}
+joins this identity to a coupling that gives stochastic domination, and allows a nontrivial $H$. The coset form allows torsion in $H$; for instance the
+inequalities hold on $C_2\times F_2$, where $C_2$ is the group of order two and $F_2$ the free group on two generators
+(Corollary~\ref{cor:finite}).
+
+Section~\ref{sec:notation} fixes conventions and proves a conditioning lemma used in both proofs. Sections~\ref{sec:A}
+and~\ref{sec:B} prove Theorems~\ref{thm:A} and~\ref{thm:B}.
+
+\section{Notation and conventions}\label{sec:notation}
+
+Throughout, $\Ga$ is a countable group, $\lambda$ and $\rho$ are its left and right regular representations on
+$\ltwo(\Ga)$, and $R(\Ga)$ is the von Neumann algebra generated by $\rho(\Ga)$, with trace
+$\tr(T)=\langle Te_{e},e_{e}\rangle$; $T^*$ denotes the adjoint of $T$. A bounded operator $K$ on $\ltwo(\Ga)$ is \emph{equivariant} if it commutes with
+$\lambda(\Ga)$, that is, with left translations; equivalently $K\in R(\Ga)$, $K$ acts by right convolution, and
+$\langle Ke_y,e_x\rangle$ depends only on $x^{-1}y$.
+With this convention $\rho(g)e_x=e_{xg^{-1}}$, so $e_x=\rho(x^{-1})e_e$ for every $x$. Results stated in the literature
+for the opposite convention, with operators commuting with right translations, transfer to ours through the unitary
+$e_x\mapsto e_{x^{-1}}$, which carries $R(\Ga)$ onto the left group von Neumann algebra $L(\Ga)$, preserves the trace,
+and carries the compression of an operator to a finite set $F$ to the compression of its image to $F^{-1}$.
+
+For a positive operator $T\in R(\Ga)$ the Fuglede--Kadison determinant is $\FK(T)=\exp\tr(\log T)$, with value $0$ when
+$\tr(\log T)=-\infty$. For $0\le K\le I$ equivariant, $\mu_K$ is the determinantal probability measure on $\{0,1\}^{\Ga}$
+with $\mu_K[\,F\subseteq\omega\,]=\det(K_F)$ for finite $F\subseteq\Ga$. Write $\pi_p$ for the product measure of density
+$p$, and $\nu\dom\nu'$ for stochastic domination.
+
+Domination of infinite-volume measures is always obtained as a limit of domination on finite windows; a window and an
+order of revelation inside it are fixed before any coupling is built.
+
+\subsection*{Schur complements and conditioning}
+Let $E$ be countable, let $Q$ be a bounded positive operator on $\ltwo(E)$, and let $A\subseteq E$ be such that the
+compression $Q_A$ of $Q$ to $\ltwo(A)$ satisfies $Q_A\ge\varepsilon I$ for some $\varepsilon>0$. Write
+$Q^{\langle A\rangle}$ for the operator on $\ltwo(E\setminus A)$ given by
+\[
+\langle Q^{\langle A\rangle}f,f\rangle=\inf\bigl\{\langle Q(f-c),f-c\rangle:\ c\in\ltwo(A)\bigr\},\qquad
+f\in\ltwo(E\setminus A),
+\]
+the Schur complement of $Q$ relative to $A$. Because $Q_A$ is invertible the infimum is attained at
+$c=Q_A^{-1}Q_{A,E\setminus A}f$, so $Q^{\langle A\rangle}=Q_{E\setminus A}-Q_{E\setminus A,A}Q_A^{-1}Q_{A,E\setminus A}$ is a
+bounded positive operator. It is monotone: $Q_1\le Q_2$ implies $Q_1^{\langle A\rangle}\le Q_2^{\langle A\rangle}$, since
+the infimum is taken of pointwise ordered forms; and $Q^{\langle A\rangle}\le Q_{E\setminus A}$, by taking $c=0$.
+
+\begin{lemma}[conditioning]\label{lem:cond}
+Let $E$ be finite, let $\varepsilon I\le K\le(1-\varepsilon)I$ on $\ltwo(E)$ for some $\varepsilon>0$, and let
+$A,B\subseteq E$ be disjoint. Conditioned on $A\subseteq\omega$ and $B\cap\omega=\emptyset$, the restriction of $\omega$ to
+$E\setminus(A\cup B)$ is determinantal with a kernel $K'$ satisfying
+\[
+K'\ \ge\ \bigl(K^{\langle A\rangle}\bigr)_{E\setminus(A\cup B)}\ \ge\ K^{\langle A\cup B\rangle}.
+\]
+\end{lemma}
+
+\begin{proof}
+The bound $K\le(1-\varepsilon)I$ gives $\mu_K(B\cap\omega=\emptyset)=\det(I-K)_B>0$, so the first conditioning below is
+defined. First condition on $B\cap\omega=\emptyset$. The complement $1-\omega$ has law $\mu_{I-K}$, and the event is
+$\{B\subseteq1-\omega\}$. By \cite[Prop.~8.3]{Ly03}, which holds for every positive contraction (on a finite $E$ it is the block-determinant
+identity $\det Q_{A\cup F}/\det Q_A=\det(Q^{\langle A\rangle})_F$ for $A\cap F=\emptyset$), the conditioned
+complement on $E\setminus B$ is determinantal with kernel $\langle P^{\perp}e,P^{\perp}f\rangle_{I-K}$, where
+$\langle u,v\rangle_{I-K}=\langle(I-K)u,v\rangle$ and $P^\perp$ is the projection orthogonal to $\ltwo(B)$ in this inner
+product; that kernel is the Schur complement $(I-K)^{\langle B\rangle}$. So $\omega$ on $E\setminus B$ is determinantal
+with kernel $K^{B}:=I-(I-K)^{\langle B\rangle}\ge I-(I-K)_{E\setminus B}=K_{E\setminus B}$. Next condition this process
+on $A\subseteq\omega$, an event of probability $\det(K^B)_A>0$ because $K^B\ge K_{E\setminus B}\ge\varepsilon I$. By
+\cite[Prop.~8.3]{Ly03} again, the result on $E\setminus(A\cup B)$ is determinantal with kernel $K'=(K^B)^{\langle
+A\rangle}$. Monotonicity of the Schur complement and $K^B\ge K_{E\setminus B}$ give
+$K'\ge(K_{E\setminus B})^{\langle A\rangle}=(K^{\langle A\rangle})_{E\setminus(A\cup B)}$, the last equality because the
+infimum runs over $c\in\ltwo(A)$ and $f$ is supported off $B$. Enlarging the set of admissible $c$ from $\ltwo(A)$ to
+$\ltwo(A\cup B)$ can only lower the infimum, which gives the second inequality.
+\end{proof}
+
+\section{Theorem A: amenability}\label{sec:A}
+
+\begin{proof}[Proof that (1) implies (2)]
+Suppose $\pi_p\dom\mu_K$. For a finite set $F\subseteq\Ga$ the event $\{F\subseteq\omega\}$ is increasing, so
+\[
+p^{|F|}=\pi_p[F\subseteq\omega]\le\mu_K[F\subseteq\omega]=\det K_F ,
+\]
+the argument of Lyons and Steif \cite{LS03} for $\Ga=\mathbb Z^d$. The map $e_x\mapsto e_{x^{-1}}$ is a unitary of
+$\ltwo(\Ga)$ that carries $R(\Ga)$ onto $L(\Ga)$, preserves $\tr$, and carries the compression $K_F$ to the compression
+of the image of $K$ to $F^{-1}$; so $\FK$ and the set of numbers $(\det K_F)^{1/|F|}$, $F$ finite, are unchanged.
+For an amenable group and any positive element, Li and Thom \cite[Thm.~1.4]{LT14} prove that the Fuglede--Kadison
+determinant equals $\inf_F(\det K_F)^{1/|F|}$ over finite $F$ (and the limit along F{\o}lner sets); no invertibility
+is assumed, so the case $\FK(K)=0$ is included. Letting $F$ run along a F{\o}lner sequence gives $p\le\FK(K)$.
+\end{proof}
+
+\begin{proof}[Proof that (2) fails on nonamenable groups]
+Let $\Ga$ be nonamenable. By the F{\o}lner criterion some finitely generated subgroup $\Ga_0$ is nonamenable, and by
+Kesten's theorem \cite{Kes59} the uniform probability measure $\nu_0$ on a finite symmetric generating set of $\Ga_0$
+has a convolution operator $P_{\nu_0}$ of norm $u_0<1$. The powers $\nu_0^{*n}$ have norms $u_0^n$, and their mass
+$b_n=\nu_0^{*n}(e)=\langle P_{\nu_0}^n e_e,e_e\rangle$ at the identity is at most $u_0^n$. Removing that mass and
+renormalising gives a symmetric probability measure $\nu=(\nu_0^{*n}-b_n\delta_e)/(1-b_n)$ with $\nu(e)=0$ and
+$q:=\|P_\nu\|\le(u_0^n+b_n)/(1-b_n)$; fix $n$ with $q<1/2$. Regarded on $\Ga$, the operator $P_\nu$ splits along the
+cosets of $\Ga_0$ into copies of itself, so its norm is still $q$.
+
+Define $M$ on $\ltwo(\Ga)$ by $\langle Me_y,e_x\rangle=\sqrt{\nu(x^{-1}y)}$. It is equivariant, real, self-adjoint and of
+finite range, with $\tr(M)=0$ and $\tr(M^2)=\sum_g\nu(g)=1$. For a nonempty finite set $F$,
+\[
+\sum_{x,y\in F}|M_{xy}|^2=\langle 1_F,P_\nu 1_F\rangle\le q|F|.
+\]
+Hence some $x\in F$ has $\sum_{y\in F}|M_{xy}|^2\le q$. Place such an $x$ last, remove it, and repeat. In the
+resulting order $x_1,\dots,x_m$ of $F$ each $x_j$ satisfies $\sum_{i<j}|M_{x_jx_i}|^2\le q$.
+
+Let $K=\tfrac12I+tM$ with $|t|\,\|M\|<\tfrac12$, so that $K$ and $I-K$ are bounded below by
+$\kappa:=\tfrac12-|t|\,\|M\|$. The restriction of $\mu_K$ to $F$ is $\mu_{K_F}$, and $\kappa I\le K_F\le(1-\kappa)I$.
+Reveal $\omega$ on $F$ in the order above. Apply Lemma~\ref{lem:cond} to the compression $K_E$ of $K_F$ to $E=\{x_1,\dots,x_j\}$ with
+$\varepsilon=\kappa$, with $A$ and $B$ the revealed points of $\{x_1,\dots,x_{j-1}\}$ that lie in and out of $\omega$; its
+second inequality, with $A\cup B=\{x_1,\dots,x_{j-1}\}$, shows that whatever has been revealed, the conditional
+probability that $x_j\in\omega$ is at least the Schur complement
+\[
+K_{x_jx_j}-k^{*}(K_{\{x_1,\dots,x_{j-1}\}})^{-1}k\ \ge\ \tfrac12-\frac{t^2q}{\kappa}=:p(t),
+\qquad k=(K_{x_ix_j})_{i<j},
+\]
+since $\|k\|^2=t^2\sum_{i<j}|M_{x_ix_j}|^2\le t^2q$ and the compression is bounded below by $\kappa$. Revealing
+$\omega$ site by site against independent uniform variables then couples $\pi_{p(t)}$ below $\mu_K$ on $F$
+(this is Holley's lemma in the form \cite[Lemma~5.2]{LS03}). Domination is preserved under weak limits, since by
+\cite{Str65} it amounts to inequalities between the probabilities of increasing cylinder events; letting $F$ increase
+gives $\pi_{p(t)}\dom\mu_K$.
+
+On the other hand $\log(\tfrac12 I+tM)=\log\tfrac12\,I+\sum_{k\ge1}(-1)^{k+1}(2tM)^k/k$, so
+$\FK(K)=\tfrac12\exp\bigl(-2t^2+O(|t|^3)\bigr)=\tfrac12-t^2+O(|t|^3)$, where the implied constant depends only on
+$\|M\|$. Since $p(t)=\tfrac12-2q t^2+O(|t|^3)$ and $2q<1$, we get $p(t)>\FK(K)$ for all sufficiently small
+$t\neq0$, so (2) fails. The same estimate applied to $I-K=\tfrac12I-tM$ shows that (3) fails.
+\end{proof}
+
+\begin{proof}[Proof that (2) and (3) are equivalent]
+If $\omega$ has law $\mu_K$ then $1-\omega$ has law $\mu_{I-K}$ \cite{Ly03}, and $\omega\mapsto1-\omega$ reverses the
+pointwise order. Hence $\mu_K\dom\pi_p$ if and only if $\pi_{1-p}\dom\mu_{I-K}$. Since $K\mapsto I-K$ is a
+bijection of the equivariant positive contractions, statement (3) for $K$ is statement (2) for $I-K$ with $1-p$ in place
+of $p$.
+\end{proof}
+
+\begin{proposition}\label{prop:F2}
+Let $\Ga=F_2$ with free generators $a,b$, let $Y=\rho(a)+\rho(a^{-1})+\rho(b)+\rho(b^{-1})$ and
+$K=\tfrac12 I+\tfrac1{32}Y$. Then $\pi_{191/384}\dom\mu_K$ and $\mu_K\dom\pi_{193/384}$, while
+$\FK(K)<64/129<191/384$ and $1-\FK(I-K)>65/129>193/384$.
+\end{proposition}
+
+\begin{proof}
+The matrix of $Y$ is the adjacency matrix of the Cayley graph of $F_2$ for $\{a^{\pm1},b^{\pm1}\}$, the $4$-regular
+tree $T$, so $\|Y\|\le4$ and $\tfrac38I\le K\le\tfrac58I$. Fix a ball $F$ of $T$ about $e$ and order it by distance
+from $e$, breaking ties arbitrarily. Each $x\ne e$ in $F$ has exactly one neighbour before it, namely its parent, since
+its other neighbours are farther from $e$ and vertices at its own distance are not adjacent to it. Lemma~\ref{lem:cond},
+applied as in the proof of Theorem~\ref{thm:A} with $\kappa=\tfrac38$ and $\|k\|^2=(1/32)^2$, shows that given any
+revealed values on the earlier points, $x$ lies in $\omega$ with conditional probability at least
+\[
+\tfrac12-\frac{1/1024}{3/8}=\tfrac12-\tfrac1{384}=\tfrac{191}{384},
+\]
+and at $x=e$, which comes first, the probability is $K_{ee}=\tfrac12$. The same lemma for $I-K=\tfrac12I-\tfrac1{32}Y$, whose law is that of
+$1-\omega$, shows that $x$ is absent with conditional probability at least $\tfrac{191}{384}$. The sequential coupling
+\cite[Lemma~5.2]{LS03} and the limit over balls give $\pi_{191/384}\dom\mu_K\dom\pi_{193/384}$.
+
+For the determinant, $\|Y/16\|\le\tfrac14$, so
+$\tr\log(I+Y/16)=\sum_{k\ge1}(-1)^{k+1}\tr(Y^k)/(k\,16^k)$. Here $\tr(Y^k)$ counts closed walks of length $k$ at $e$
+in $T$; it vanishes for odd $k$, since $T$ is bipartite, and every even term enters with a minus sign. Keeping only
+$k=2$, with $\tr(Y^2)=4$,
+\[
+\FK(K)=\tfrac12\exp\tr\log(I+Y/16)\le\tfrac12e^{-1/128}<\tfrac12\Bigl(1-\tfrac1{128}+\tfrac1{2\cdot128^2}\Bigr)
+<\tfrac12\cdot\tfrac{128}{129}=\tfrac{64}{129}.
+\]
+The same series for $I-K=\tfrac12(I-Y/16)$ has the same even terms and no odd ones, so $\FK(I-K)<\tfrac{64}{129}$ as
+well. Finally $191\cdot129-64\cdot384=63>0$ and $65\cdot384-193\cdot129=63>0$.
+\end{proof}
+
+\section{Theorem B: groups ordered modulo a subgroup}\label{sec:B}
+
+\begin{corollary}\label{cor:lo}
+Lyons's inequalities hold on every left-orderable group.
+\end{corollary}
+
+\begin{corollary}\label{cor:finite}
+Let $H$ be a normal subgroup of $\Ga$ with $\Ga/H$ left-orderable. If $H$ has order $2$, or more generally if $H$
+satisfies the hypothesis of Theorem~\ref{thm:B}, then Lyons's inequalities hold on $\Ga$; for instance on $C_2\times F_2$.
+\end{corollary}
+
+\begin{remark}
+For $\Ga/H=\mathbb Z^d$ and $H$ finite, an equivariant kernel is a $\mathbb Z^d$-stationary matrix-valued kernel, the
+setting of Cyr \cite{Cyr21}, whose study of such processes includes a notion of full domination. The bounds of
+Theorem~\ref{thm:B} concern stochastic domination and the geometric mean $\FK(K)$.
+\end{remark}
+
+\begin{proof}[Proof of Theorem~\ref{thm:B}]
+Write $<$ for the order on $\Ga/H$, and put
+\[
+U_+=\{x\in\Ga:\ xH>H\},\qquad S=\{s\in\Ga:\ s^{-1}H>H\}=U_+^{-1}.
+\]
+
+\emph{Step 1: a subdiagonal algebra.} Left invariance of the order gives $SS\subseteq S$: if $s_1,s_2\in S$, applying
+$s_2^{-1}$ to $s_1^{-1}H>H$ gives $(s_1s_2)^{-1}H>s_2^{-1}H>H$. It also gives $HS\subseteq S$ and $SH\subseteq S$, since
+for $h\in H$ and $s\in S$ we have $(hs)^{-1}H=s^{-1}H$ and $(sh)^{-1}H=h^{-1}s^{-1}H>h^{-1}H=H$. For every $x\in\Ga$ exactly one of $xH=H$, $xH>H$,
+$xH<H$ holds, and applying $x^{-1}$ to $xH<H$ gives $x^{-1}H>H$; so $\Ga$ is the disjoint union of $H$, $S$ and
+$S^{-1}$. Let $\mathcal A$ be the weak$^*$-closed linear span of $\{\rho(g):g\in H\cup S\}$ in $R(\Ga)$, let
+$\mathcal A_0$ be that of $\{\rho(s):s\in S\}$, and let $\Phi$ be the trace-preserving conditional expectation of
+$R(\Ga)$ onto $R(H)$, which keeps the coefficients on $H$ and drops the rest. By the relations just shown, $\mathcal A$
+is an algebra, $\mathcal A_0$ is an ideal in it with $\Phi(\mathcal A_0)=0$, $\Phi$ is multiplicative on $\mathcal A$,
+$\mathcal A\cap\mathcal A^*=R(H)$, and $\mathcal A+\mathcal A^*$ contains every $\rho(g)$ and so is weak$^*$ dense.
+(Multiplicativity of $\Phi$ passes from the span to its weak$^*$ closure because $\Phi$ is normal and multiplication is
+separately weak$^*$ continuous; $\mathcal A\cap\mathcal A^*=R(H)$ because an element of both has its Fourier coefficients
+supported in $(H\cup S)\cap(H\cup S^{-1})=H$.) Thus $\mathcal A$ is a weak$^*$-closed unital subalgebra of the finite
+von Neumann algebra $R(\Ga)$ satisfying Arveson's conditions \cite{Arv67}. These are the conditions in the definition
+of a (finite maximal) subdiagonal algebra in \cite[Sec.~1]{BL}. For such algebras Jensen's inequality $\FK(x)\ge\FK(\Phi(x))$ holds for every $x$ in the algebra,
+invertible or not \cite[Cor.~3.3]{BL}. Hence
+\begin{equation}\label{eq:jensen}
+\FK(x)\ge\FK(\Phi(x))\qquad(x\in\mathcal A).
+\end{equation}
+
+\emph{Step 2: the Schur complement on $H$.} Fix $\delta\in(0,\tfrac12)$ and put $K_\delta=(1-2\delta)K+\delta I$, so
+that $\delta I\le K_\delta\le(1-\delta)I$. Define $R$ on $\ltwo(H)$ by
+\[
+\langle Rf,f\rangle=\inf\bigl\{\langle K_\delta(f-b),f-b\rangle:\ b\in\ltwo(U_+)\bigr\},
+\]
+that is, $R=K_\delta^{\langle U_+\rangle}$ compressed to $\ltwo(H)$; since the compression of $K_\delta$ to
+$\ltwo(U_+)$ is at least $\delta$, this is the usual operator Schur complement, and $\delta I\le R\le I$. For $h\in H$,
+$\lambda(h)$ maps $H$ and $U_+$ onto themselves (left invariance again) and commutes with $K_\delta$, so $R$ commutes
+with $\lambda(H)$ on $\ltwo(H)$, that is, $R\in R(H)$. Through the inclusion $R(H)\subseteq R(\Ga)$ that sends
+$\rho(h)$ to $\rho(h)$ we regard $R$ also as an operator on $\ltwo(\Ga)$; the trace of $R(\Ga)$ restricts to that of
+$R(H)$, so $\FK(R)$ is the same in both algebras, and $\FK(R)$ in the hypothesis of Theorem~\ref{thm:B} is taken in
+this sense.
+
+\emph{Step 3: $\FK(R)\ge\FK(K_\delta)$.} Let $d\in R(H)$. Then $de_e\in\ltwo(H)$, finitely supported vectors are dense in
+$\ltwo(U_+)$, and a finitely supported $b\in\ltwo(U_+)$ has the form $b=ae_e$ with $a$ in the linear span of
+$\{\rho(s):s\in S\}$, because $e_x=\rho(x^{-1})e_e$. Since $\langle Te_e,e_e\rangle=\tr(T)$ for $T\in R(\Ga)$,
+\[
+\tr(d^*Rd)=\langle Rde_e,de_e\rangle=\inf_a\ \tr\bigl((d-a)^*K_\delta(d-a)\bigr),
+\]
+the infimum over that span. For each such $a$, $x=d-a$ lies in $\mathcal A$ with $\Phi(x)=d$, so by the arithmetic--
+geometric inequality $\tr(y)\ge\FK(y)$ for $y\ge0$ (that is, $\log\tr(y)\ge\tr(\log y)$, the classical Jensen inequality
+for the concave function $\log$ and the spectral measure of $y$ in the state $\tr$), the identities $\FK(ab)=\FK(a)\FK(b)$ and $\FK(a^*)=\FK(a)$, which
+hold for arbitrary, not necessarily invertible, elements of a finite von Neumann algebra \cite[Thm.~2.1]{BL} (with
+proofs credited there to Haagerup and Schultz), and \eqref{eq:jensen},
+\[
+\tr(x^*K_\delta x)\ \ge\ \FK(x^*K_\delta x)=\FK(K_\delta)\,\FK(x)^2\ \ge\ \FK(K_\delta)\,\FK(d)^2 .
+\]
+Take $d=\FK(R)^{1/2}R^{-1/2}$, which lies in $R(H)$ because $R\ge\delta I$, and has $\FK(d)=1$ and
+$\tr(d^*Rd)=\FK(R)$. The two displays give $\FK(R)\ge\FK(K_\delta)$. Only this inequality is used; equality, which is
+Szeg\H{o}'s formula in the setting of \cite{Lab05}, is not needed.
+
+\emph{Step 4: finite windows.} Let $W\subseteq\Ga$ be finite, and let $g_1H>g_2H>\dots>g_mH$ be the cosets that meet
+$W$, with blocks $W_j=W\cap g_jH$. Reveal $\omega$ under $\mu_{K_\delta}$ block by block, $W_1$ first. Fix $j$ and any
+values on $P=W_1\cup\dots\cup W_{j-1}$. The restriction of $\mu_{K_\delta}$ to $P\cup W_j$ is determinantal with kernel
+the compression of $K_\delta$, which lies between $\delta I$ and $(1-\delta)I$. Lemma~\ref{lem:cond}, with
+$\varepsilon=\delta$ and $A\cup B=P$, shows that the conditional law on $W_j$ is determinantal with a kernel $K'$ satisfying
+\[
+K'\ \ge\ \bigl((K_\delta)_{P\cup W_j}\bigr)^{\langle P\rangle}\ \ge\ \bigl(K_\delta^{\langle U(g_j)\rangle}\bigr)_{W_j},
+\qquad U(g_j)=\{x:\ xH>g_jH\},
+\]
+where the middle term is the Schur complement relative to $P$ of the compression of $K_\delta$ to $P\cup W_j$, which is
+what Lemma~\ref{lem:cond} gives, and the right side is defined because the compression of $K_\delta$ to
+$\ltwo(U(g_j))$ is at least $\delta$. The second inequality holds because $P\subseteq U(g_j)$, so that more vectors $c$ are admitted in the infimum. Left
+multiplication by $g_j^{-1}$ maps $g_jH$ onto $H$ and $U(g_j)$ onto $U_+$, by left invariance, and $\lambda(g_j)$
+commutes with $K_\delta$; so the right side is unitarily equivalent, through $\lambda(g_j)$, to the compression of $R$
+to $g_j^{-1}W_j\subseteq H$. By monotonicity of determinantal measures in the kernel, which needs no commutation
+\cite[Thm.~2.9]{LyICM}, the conditional law on $W_j$ dominates the translate of $\mu_R$ restricted to $g_j^{-1}W_j$. By
+the hypothesis on $H$ and Step~3, $\pi_{\FK(R)}\dom\mu_R$ and $\FK(R)\ge\FK(K_\delta)$. So, whatever was revealed
+before, the conditional law on each block dominates $\pi_{\FK(K_\delta)}$ on that block. Coupling block by block, with
+Strassen's theorem \cite{Str65} on each block and the blocks composed sequentially as in \cite[Lemma~5.2]{LS03}, gives $\pi_{\FK(K_\delta)}\dom\mu_{K_\delta}$ on $W$, and letting $W$ increase gives it on $\Ga$.
+
+\emph{Step 5: limits.} Since $K_\delta\ge(1-2\delta)K$ and $\FK$ is monotone, $\FK(K_\delta)\ge(1-2\delta)\FK(K)$, so
+$\pi_{(1-2\delta)\FK(K)}\dom\mu_{K_\delta}$. As $\delta\to0$, $K_\delta\to K$ in norm, so every cylinder probability
+$\det((K_\delta)_F)$ converges to $\det(K_F)$; domination passes to the weak limit and gives $\pi_{\FK(K)}\dom\mu_K$.
+Applied to $I-K$, which is also equivariant, this gives $\pi_{\FK(I-K)}\dom\mu_{I-K}$, which is
+$\mu_K\dom\pi_{1-\FK(I-K)}$ as in the proof that (2) and (3) of Theorem~\ref{thm:A} are equivalent.
+\end{proof}
+
+\begin{proof}[Proof of Corollaries~\ref{cor:lo} and~\ref{cor:finite}]
+For Corollary~\ref{cor:lo} take $H=\{e\}$: an equivariant $R$ on $\ltwo(\{e\})$ is a number $r\in[0,1]$, and
+$\mu_R=\pi_r=\pi_{\FK(R)}$. For Corollary~\ref{cor:finite} it suffices to check the hypothesis for $H$ of order $2$,
+since a left order on the group $\Ga/H$ is an order on the coset space invariant under left multiplication by $\Ga$.
+An $H$-equivariant $0\le R\le I$ on $\ltwo(H)$ has the form $R=\begin{pmatrix}a&b\\b&a\end{pmatrix}$ with $a,b$ real and
+$0\le a-|b|\le a+|b|\le1$. With the normalised trace, $p:=\FK(R)=\sqrt{(a+b)(a-b)}=\sqrt{a^2-b^2}$. On two points
+stochastic domination amounts to the inequalities for the four nontrivial increasing events (a given point is present,
+both are, at least one is) \cite{Str65}. Each single point lies
+in $\omega$ with probability $a\ge p$; both lie in $\omega$ with probability $\det R=a^2-b^2=p^2$; and at least one lies
+in $\omega$ with probability $1-\det(I-R)=1-(1-a)^2+b^2\ge1-(1-p)^2$, because $0\le1-a\le1-p$. So
+$\pi_{\FK(R)}\dom\mu_R$.
+\end{proof}
+
+\begin{remark}\label{rem:block}
+The subgroup $H$ has to be treated as a block. Let $H$ be finite of order $n$, let $R$ be $H$-equivariant, and reveal
+the points of $H$ in any order $x_1,\dots,x_n$. The conditional probabilities that $x_j$ is present given that
+$x_1,\dots,x_{j-1}$ are present multiply to $\det R=\FK(R)^n$, so either one of them is smaller than $\FK(R)$ or all of
+them equal $\FK(R)$. For $n=2$ and $R$ as in the proof above with $0<|b|<a$ they are $a$ and $p^2/a<p$. So the criterion that
+compares each conditional probability with $\FK(R)$ fails along every revelation order of $H$, although
+$\pi_{\FK(R)}\dom\mu_R$ holds. For the same reason the invariant random
+orders that Austin uses in place of an invariant order \cite[Thm.~B]{Aus} do not by themselves give the lower
+inequality on every group: his determinant of the absolutely continuous part is a Fuglede--Kadison determinant
+\cite[Prop.~2.8, Def.~2.11]{Aus}, equal to $\FK(K)$ for the functional of $K\in R(\Ga)$, and its logarithm is the mean, over the random order, of the logarithm
+of the Schur complement at the identity relative to the past, and a mean gives no bound at each site. Since a finite set
+with a total order invariant under a transitive action is a single point, Theorem~\ref{thm:B} gives nothing for a finite
+group beyond its hypothesis.
+\end{remark}
+
+\section*{Acknowledgments and funding}
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math
+Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent
+memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results,
+coordinate who works on what, and audit each other's work. For more on the Brain and Math Brain, see the Math Brain
+paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework
+repository~\cite{BrainFramework}.
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European
+Union's Horizon Europe research and innovation programme (grant agreement No.\ 101041711), by the Simons Foundation
+(as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning), by Heights Labs, by
+Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+
+\section*{Code and data availability}
+
+The paper uses no data. The two Python scripts in the directory \texttt{checks} of the paper's repository check
+Lemma~\ref{lem:cond} numerically, by enumerating all configurations on a set of six points, for every pair of disjoint sets $A$ and $B$ that
+leaves a point free and for three random kernels.
+
+\section*{Declaration of competing interest}
+
+The author holds equity in Heights Labs and Convex Nexus Capital and has a management role at Convex Nexus Capital.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+This paper is part of a broader research project on proving open problems with AI systems. The arguments and the
+computer checks were developed with AI systems (OpenAI Codex and Anthropic Claude agents), which also drafted the
+text. The conjecture is due to Lyons \cite{LyICM} and the case of $\mathbb Z^d$ to Lyons and Steif \cite{LS03}. The
+proof of Theorem~\ref{thm:A} rests on the approximation theorem for the Fuglede--Kadison determinant of Li and Thom
+\cite{LT14}, and the proof of Theorem~\ref{thm:B} on the Jensen inequality for subdiagonal algebras, due to Labuschagne
+\cite{Lab05} and Blecher and Labuschagne \cite{BL}. The author directed the work and is responsible for the content of the paper and
+for decisions concerning its dissemination.
+
+\appendix
+\section{Notation}\label{app:notation}
+
+Symbols used in more than one place, in the order in which they first appear. Letters used only inside one proof are
+defined where they are used.
+
+\begin{center}\begin{tabular}{@{}lp{0.56\textwidth}l@{}}\toprule
+Symbol & Meaning & First appears \\ \midrule
+$\Ga$ & a countable group & Section~\ref{sec:intro} \\
+$K$ & a $\Ga$-equivariant operator on $\ltwo(\Ga)$ with $0\le K\le I$ & Section~\ref{sec:intro} \\
+$I$ & the identity operator & Section~\ref{sec:intro} \\
+$\mu_K$ & the determinantal measure on $\{0,1\}^{\Ga}$ given by $K$ & Section~\ref{sec:intro} \\
+$\pi_p$ & the product measure on $\{0,1\}^{\Ga}$ of density $p$ & Section~\ref{sec:intro} \\
+$\dom$ & stochastic domination & Section~\ref{sec:intro} \\
+$\FK(T)$ & the Fuglede--Kadison determinant $\exp\tr(\log T)$ & Section~\ref{sec:intro} \\
+$H$ & a subgroup of $\Ga$ with $\Ga/H$ totally ordered & Section~\ref{sec:intro} \\
+$R$ & an $H$-equivariant operator on $\ltwo(H)$ with $0\le R\le I$ & Theorem~\ref{thm:B} \\
+$C_2$, $F_2$ & the group of order two; the free group on two generators & Section~\ref{sec:intro} \\
+$e_x$ & the standard basis vector of $\ltwo(\Ga)$ at $x\in\Ga$ & Section~\ref{sec:notation} \\
+$\lambda$, $\rho$ & the left and right regular representations of $\Ga$ & Section~\ref{sec:notation} \\
+$R(\Ga)$ & the von Neumann algebra generated by $\rho(\Ga)$ & Section~\ref{sec:notation} \\
+$\tr$ & the trace $\tr(T)=\langle Te_e,e_e\rangle$ on $R(\Ga)$ & Section~\ref{sec:notation} \\
+$T^*$ & the adjoint of an operator $T$ & Section~\ref{sec:notation} \\
+$\omega$ & a configuration in $\{0,1\}^{\Ga}$, identified with a subset of $\Ga$ & Section~\ref{sec:notation} \\
+$U_+$, $S$ & $\{x:xH>H\}$ and $U_+^{-1}$ & Section~\ref{sec:B} \\
+$\mathcal A$, $\mathcal A_0$ & the subdiagonal algebra and its ideal & Section~\ref{sec:B} \\
+$\Phi$ & the conditional expectation of $R(\Ga)$ onto $R(H)$ & Section~\ref{sec:B} \\
+$K_\delta$ & $(1-2\delta)K+\delta I$ & Section~\ref{sec:B} \\
+\bottomrule\end{tabular}\end{center}
+
+\begin{thebibliography}{99}\raggedright
+\bibitem{Arv67} W. Arveson, Analyticity in operator algebras, \emph{Amer. J. Math.} 89 (1967), 578--642.
+\bibitem{Aus} T. Austin, Entropy and determinants for unitary representations, arXiv:2412.13751v4, 2026.
+\bibitem{BL} D. P. Blecher and L. E. Labuschagne, Applications of the Fuglede--Kadison determinant: Szeg\H{o}'s
+theorem and outers for noncommutative $H^p$, \emph{Trans. Amer. Math. Soc.} 360 (2008), no.~11, 6131--6147; arXiv:math/0609662 (section and corollary numbers
+cited here are those of the arXiv version).
+\bibitem{Cyr21} J. Cyr, Stationary determinantal processes on $\mathbb Z^d$ with $N$ labeled objects per site, Part I:
+basic properties and full domination, \emph{J. Theoret. Probab.} 34 (2021), no.~3, 1321--1365,
+doi:10.1007/s10959-020-01062-5.
+\bibitem{Kes59} H. Kesten, Symmetric random walks on groups, \emph{Trans. Amer. Math. Soc.} 92 (1959), 336--354.
+\bibitem{Lab05} L. E. Labuschagne, A noncommutative Szeg\H{o} theorem for subdiagonal subalgebras of von Neumann
+algebras, \emph{Proc. Amer. Math. Soc.} 133 (2005), 3643--3646.
+\bibitem{LT14} H. Li and A. Thom, Entropy, determinants, and $L^2$-torsion, \emph{J. Amer. Math. Soc.} 27 (2014),
+239--292.
+\bibitem{Ly03} R. Lyons, Determinantal probability measures, \emph{Publ. Math. Inst. Hautes \'Etudes Sci.} 98 (2003),
+167--212.
+\bibitem{LyT16} R. Lyons and A. Thom, Invariant coupling of determinantal measures on sofic groups, \emph{Ergodic
+Theory Dynam. Systems} 36 (2016), 574--607; arXiv:1402.0969.
+\bibitem{LyICM} R. Lyons, Determinantal probability: basic properties and conjectures, \emph{Proc. Int. Congress
+Math.} (Seoul, 2014), vol. IV, 137--161; arXiv:1406.2707.
+\bibitem{LS03} R. Lyons and J. E. Steif, Stationary determinantal processes: phase multiplicity, Bernoullicity,
+entropy, and domination, \emph{Duke Math. J.} 120 (2003), 515--575.
+\bibitem{RS} G. Ray and Y. Spinka, Characterizations of amenability through stochastic domination and finitary codings,
+\emph{Trans. Amer. Math. Soc.} (2026), doi:10.1090/tran/9703; arXiv:2304.13784.
+\bibitem{Str65} V. Strassen, The existence of probability measures with given marginals, \emph{Ann. Math. Statist.}
+36 (1965), 423--439.
+\bibitem{MathBrainPaper}
+Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026.
+\url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a/papers/math-brain-2026-10-24}
+\bibitem{MathBrainRepo}
+Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026.
+\url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a}
+\bibitem{BrainFramework}
+Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026.
+\url{https://github.com/yspennstate/brain-framework-public/tree/46b935d26d5a2893f7790b60466387dd8da47ef5}
+\end{thebibliography}
+
+\end{document}
