@@ -2,6 +2,8 @@
 
 Yitzchak Shmalo
 
+DOI: [10.5281/zenodo.24462303](https://doi.org/10.5281/zenodo.24462303) (all versions); version 1.0: [10.5281/zenodo.24462304](https://doi.org/10.5281/zenodo.24462304)
+
 Let Gamma be a countable group and let mu_K be the determinantal measure on {0,1}^Gamma given by a Gamma-equivariant
 positive contraction K on l^2(Gamma). Lyons conjectured that mu_K stochastically dominates the Bernoulli product measure
 of density equal to the Fuglede-Kadison determinant FK(K), is dominated by the product measure of density
